@@ -7,7 +7,7 @@
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
  *
- * Created: 4/7/2019 1:56:31 AM
+ * Created: 4/7/2019 10:49:59 PM
  */ 
 	
 #include <avr/io.h>
@@ -34,6 +34,10 @@ int main(void)
 		hold4 = PINA & 0x08;
 		cntavail = 0x00;
 		
+		if ((hold1 != 0x00) && (hold2 != 0x00) && (hold3 != 0x00) && (hold4 != 0x00)){
+			cntavail  = cntavail | 0x80;
+		}
+		
 		if (hold1 != 0x00) {
 			cntavail = cntavail + 1;
 		} 
@@ -47,12 +51,8 @@ int main(void)
 			cntavail = cntavail + 1;
 		}
 
-		if ((hold1 != 0x00) && (hold2 != 0x00) && (hold3 != 0x00) && (hold4 != 0x00)) {
-			cntavail = cntavail | 0x80; //full check
-		}
-
 			PORTC = 0x00;
-			PORTC = cntavail;
+			PORTC = 4 - cntavail;
 
 	}
 	return 0;

@@ -47,7 +47,7 @@ int main(void)
 			cntavail = cntavail + 1;
 		}
 			PORTC = 0x00;
-			PORTC = cntavail;
+			PORTC = 4 - cntavail;
 
 	}
 	return 0;
