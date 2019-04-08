@@ -1,27 +1,14 @@
 /*
- * [rquac004]_lab[2]_part[1].cpp
+ * rquac004@ucr.edu
+ * gpera002@ucr.edu
+ * Lab Section: 028
+ * Exercise Description: 
+ * 
+ *	I acknowledge all content contained herein, excluding template or example
+ *	code, is my own original work.
  *
  * Created: 4/4/2019 12:48:03 PM
- * Author : mrvec
  */
-/* 
-#include <avr/io.h>
-
-int main(void)
-{
-	DDRA = 0x00; PORTA = 0xFF; // Configure port A's 8 pins as inputs
-	DDRB = 0xFF; PORTB = 0x00; // Configure port B's 8 pins as outputs
-					// Initialize output on PORTB to 0x00
-	unsigned char temp_input = 0x00;
-	while(1)
-	{
-		temp_input = PINA;
-		PORTB = temp_input;	// Writes port B's 8 pins with the values
-					// on port A's 8 pins
-	}
-}
-
-*/
 
 #include <avr/io.h>
 

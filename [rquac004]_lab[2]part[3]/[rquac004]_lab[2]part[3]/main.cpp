@@ -1,14 +1,13 @@
 /*
- * [rquac004]_lab[2]part[3].cpp
+ * rquac004@ucr.edu
+ * gpera002@ucr.edu
+ * Lab Section: 028
+ * Exercise Description: 
+ * 
+ *	I acknowledge all content contained herein, excluding template or example
+ *	code, is my own original work.
  *
  * Created: 4/7/2019 1:56:31 AM
- * Author : mrvec
- */ 
-/*
- * [rquac004]_lab[2]_part[2].cpp
- *
- * Created: 4/5/2019 11:46:31 AM
- * Author : mrvec
  */ 
 	
 #include <avr/io.h>
