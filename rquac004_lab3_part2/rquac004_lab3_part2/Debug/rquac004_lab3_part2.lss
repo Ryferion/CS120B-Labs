@@ -1,0 +1,467 @@
+
+rquac004_lab3_part2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002e8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000294  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000002e8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000318  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  00000358  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000915  00000000  00000000  00000380  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000007d9  00000000  00000000  00000c95  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000003d8  00000000  00000000  0000146e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  00001848  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000041c  00000000  00000000  0000189c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000008f  00000000  00000000  00001cb8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  00001d47  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	4b c0       	rjmp	.+150    	; 0x9c <__bad_interrupt>
+   6:	00 00       	nop
+   8:	49 c0       	rjmp	.+146    	; 0x9c <__bad_interrupt>
+   a:	00 00       	nop
+   c:	47 c0       	rjmp	.+142    	; 0x9c <__bad_interrupt>
+   e:	00 00       	nop
+  10:	45 c0       	rjmp	.+138    	; 0x9c <__bad_interrupt>
+  12:	00 00       	nop
+  14:	43 c0       	rjmp	.+134    	; 0x9c <__bad_interrupt>
+  16:	00 00       	nop
+  18:	41 c0       	rjmp	.+130    	; 0x9c <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	3f c0       	rjmp	.+126    	; 0x9c <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	3d c0       	rjmp	.+122    	; 0x9c <__bad_interrupt>
+  22:	00 00       	nop
+  24:	3b c0       	rjmp	.+118    	; 0x9c <__bad_interrupt>
+  26:	00 00       	nop
+  28:	39 c0       	rjmp	.+114    	; 0x9c <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	37 c0       	rjmp	.+110    	; 0x9c <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	35 c0       	rjmp	.+106    	; 0x9c <__bad_interrupt>
+  32:	00 00       	nop
+  34:	33 c0       	rjmp	.+102    	; 0x9c <__bad_interrupt>
+  36:	00 00       	nop
+  38:	31 c0       	rjmp	.+98     	; 0x9c <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	2f c0       	rjmp	.+94     	; 0x9c <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	2d c0       	rjmp	.+90     	; 0x9c <__bad_interrupt>
+  42:	00 00       	nop
+  44:	2b c0       	rjmp	.+86     	; 0x9c <__bad_interrupt>
+  46:	00 00       	nop
+  48:	29 c0       	rjmp	.+82     	; 0x9c <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	27 c0       	rjmp	.+78     	; 0x9c <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	25 c0       	rjmp	.+74     	; 0x9c <__bad_interrupt>
+  52:	00 00       	nop
+  54:	23 c0       	rjmp	.+70     	; 0x9c <__bad_interrupt>
+  56:	00 00       	nop
+  58:	21 c0       	rjmp	.+66     	; 0x9c <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	1f c0       	rjmp	.+62     	; 0x9c <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	1d c0       	rjmp	.+58     	; 0x9c <__bad_interrupt>
+  62:	00 00       	nop
+  64:	1b c0       	rjmp	.+54     	; 0x9c <__bad_interrupt>
+  66:	00 00       	nop
+  68:	19 c0       	rjmp	.+50     	; 0x9c <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	17 c0       	rjmp	.+46     	; 0x9c <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	15 c0       	rjmp	.+42     	; 0x9c <__bad_interrupt>
+  72:	00 00       	nop
+  74:	13 c0       	rjmp	.+38     	; 0x9c <__bad_interrupt>
+  76:	00 00       	nop
+  78:	11 c0       	rjmp	.+34     	; 0x9c <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	0f c0       	rjmp	.+30     	; 0x9c <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	0d c0       	rjmp	.+26     	; 0x9c <__bad_interrupt>
+  82:	00 00       	nop
+  84:	0b c0       	rjmp	.+22     	; 0x9c <__bad_interrupt>
+  86:	00 00       	nop
+  88:	09 c0       	rjmp	.+18     	; 0x9c <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e4       	ldi	r29, 0x40	; 64
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+  98:	30 d0       	rcall	.+96     	; 0xfa <main>
+  9a:	fa c0       	rjmp	.+500    	; 0x290 <_exit>
+
+0000009c <__bad_interrupt>:
+  9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
+
+0000009e <SetBit>:
+ * Author : mrvec
+ */ 
+
+#include <avr/io.h>
+
+unsigned char SetBit(unsigned char x, unsigned char k, unsigned char b) {
+  9e:	cf 93       	push	r28
+  a0:	df 93       	push	r29
+  a2:	00 d0       	rcall	.+0      	; 0xa4 <SetBit+0x6>
+  a4:	1f 92       	push	r1
+  a6:	cd b7       	in	r28, 0x3d	; 61
+  a8:	de b7       	in	r29, 0x3e	; 62
+  aa:	89 83       	std	Y+1, r24	; 0x01
+  ac:	6a 83       	std	Y+2, r22	; 0x02
+  ae:	4b 83       	std	Y+3, r20	; 0x03
+	return (b ? x | (0x01 << k) : x & ~(0x01 << k));
+  b0:	8b 81       	ldd	r24, Y+3	; 0x03
+  b2:	88 23       	and	r24, r24
+  b4:	71 f0       	breq	.+28     	; 0xd2 <SetBit+0x34>
+  b6:	8a 81       	ldd	r24, Y+2	; 0x02
+  b8:	28 2f       	mov	r18, r24
+  ba:	30 e0       	ldi	r19, 0x00	; 0
+  bc:	81 e0       	ldi	r24, 0x01	; 1
+  be:	90 e0       	ldi	r25, 0x00	; 0
+  c0:	02 c0       	rjmp	.+4      	; 0xc6 <SetBit+0x28>
+  c2:	88 0f       	add	r24, r24
+  c4:	99 1f       	adc	r25, r25
+  c6:	2a 95       	dec	r18
+  c8:	e2 f7       	brpl	.-8      	; 0xc2 <SetBit+0x24>
+  ca:	98 2f       	mov	r25, r24
+  cc:	89 81       	ldd	r24, Y+1	; 0x01
+  ce:	89 2b       	or	r24, r25
+  d0:	0e c0       	rjmp	.+28     	; 0xee <SetBit+0x50>
+  d2:	8a 81       	ldd	r24, Y+2	; 0x02
+  d4:	28 2f       	mov	r18, r24
+  d6:	30 e0       	ldi	r19, 0x00	; 0
+  d8:	81 e0       	ldi	r24, 0x01	; 1
+  da:	90 e0       	ldi	r25, 0x00	; 0
+  dc:	02 c0       	rjmp	.+4      	; 0xe2 <SetBit+0x44>
+  de:	88 0f       	add	r24, r24
+  e0:	99 1f       	adc	r25, r25
+  e2:	2a 95       	dec	r18
+  e4:	e2 f7       	brpl	.-8      	; 0xde <SetBit+0x40>
+  e6:	98 2f       	mov	r25, r24
+  e8:	90 95       	com	r25
+  ea:	89 81       	ldd	r24, Y+1	; 0x01
+  ec:	89 23       	and	r24, r25
+}
+  ee:	0f 90       	pop	r0
+  f0:	0f 90       	pop	r0
+  f2:	0f 90       	pop	r0
+  f4:	df 91       	pop	r29
+  f6:	cf 91       	pop	r28
+  f8:	08 95       	ret
+
+000000fa <main>:
+
+
+int main(void)
+{
+  fa:	cf 93       	push	r28
+  fc:	df 93       	push	r29
+  fe:	cd b7       	in	r28, 0x3d	; 61
+ 100:	de b7       	in	r29, 0x3e	; 62
+ 102:	2a 97       	sbiw	r28, 0x0a	; 10
+ 104:	0f b6       	in	r0, 0x3f	; 63
+ 106:	f8 94       	cli
+ 108:	de bf       	out	0x3e, r29	; 62
+ 10a:	0f be       	out	0x3f, r0	; 63
+ 10c:	cd bf       	out	0x3d, r28	; 61
+	DDRA = 0x00; PORTA = 0xFF; // config
+ 10e:	81 e2       	ldi	r24, 0x21	; 33
+ 110:	90 e0       	ldi	r25, 0x00	; 0
+ 112:	fc 01       	movw	r30, r24
+ 114:	10 82       	st	Z, r1
+ 116:	82 e2       	ldi	r24, 0x22	; 34
+ 118:	90 e0       	ldi	r25, 0x00	; 0
+ 11a:	2f ef       	ldi	r18, 0xFF	; 255
+ 11c:	fc 01       	movw	r30, r24
+ 11e:	20 83       	st	Z, r18
+	DDRB = 0xFF; PORTB = 0x00; // config
+ 120:	84 e2       	ldi	r24, 0x24	; 36
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	2f ef       	ldi	r18, 0xFF	; 255
+ 126:	fc 01       	movw	r30, r24
+ 128:	20 83       	st	Z, r18
+ 12a:	85 e2       	ldi	r24, 0x25	; 37
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	fc 01       	movw	r30, r24
+ 130:	10 82       	st	Z, r1
+	DDRC = 0xFF; PORTC = 0x00; // config
+ 132:	87 e2       	ldi	r24, 0x27	; 39
+ 134:	90 e0       	ldi	r25, 0x00	; 0
+ 136:	2f ef       	ldi	r18, 0xFF	; 255
+ 138:	fc 01       	movw	r30, r24
+ 13a:	20 83       	st	Z, r18
+ 13c:	88 e2       	ldi	r24, 0x28	; 40
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	fc 01       	movw	r30, r24
+ 142:	10 82       	st	Z, r1
+	
+	unsigned char hold1 = 0x00;
+ 144:	1e 82       	std	Y+6, r1	; 0x06
+	unsigned char hold2 = 0x00;
+ 146:	1f 82       	std	Y+7, r1	; 0x07
+	unsigned char hold3 = 0x00;
+ 148:	18 86       	std	Y+8, r1	; 0x08
+	unsigned char hold4 = 0x00;
+ 14a:	19 86       	std	Y+9, r1	; 0x09
+	unsigned char level = 0x00;
+ 14c:	1a 86       	std	Y+10, r1	; 0x0a
+	unsigned char output = 0x00;
+ 14e:	19 82       	std	Y+1, r1	; 0x01
+    while (1) 
+    {
+		hold1 = PINA & 0x01;
+ 150:	80 e2       	ldi	r24, 0x20	; 32
+ 152:	90 e0       	ldi	r25, 0x00	; 0
+ 154:	fc 01       	movw	r30, r24
+ 156:	80 81       	ld	r24, Z
+ 158:	81 70       	andi	r24, 0x01	; 1
+ 15a:	8e 83       	std	Y+6, r24	; 0x06
+		hold2 = PINA & 0x02;
+ 15c:	80 e2       	ldi	r24, 0x20	; 32
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	fc 01       	movw	r30, r24
+ 162:	80 81       	ld	r24, Z
+ 164:	82 70       	andi	r24, 0x02	; 2
+ 166:	8f 83       	std	Y+7, r24	; 0x07
+		hold3 = PINA & 0x04;
+ 168:	80 e2       	ldi	r24, 0x20	; 32
+ 16a:	90 e0       	ldi	r25, 0x00	; 0
+ 16c:	fc 01       	movw	r30, r24
+ 16e:	80 81       	ld	r24, Z
+ 170:	84 70       	andi	r24, 0x04	; 4
+ 172:	88 87       	std	Y+8, r24	; 0x08
+		hold4 = PINA & 0x08;
+ 174:	80 e2       	ldi	r24, 0x20	; 32
+ 176:	90 e0       	ldi	r25, 0x00	; 0
+ 178:	fc 01       	movw	r30, r24
+ 17a:	80 81       	ld	r24, Z
+ 17c:	88 70       	andi	r24, 0x08	; 8
+ 17e:	89 87       	std	Y+9, r24	; 0x09
+		level = hold1 + hold2 + hold3 + hold4;
+ 180:	9e 81       	ldd	r25, Y+6	; 0x06
+ 182:	8f 81       	ldd	r24, Y+7	; 0x07
+ 184:	98 0f       	add	r25, r24
+ 186:	88 85       	ldd	r24, Y+8	; 0x08
+ 188:	98 0f       	add	r25, r24
+ 18a:	89 85       	ldd	r24, Y+9	; 0x09
+ 18c:	89 0f       	add	r24, r25
+ 18e:	8a 87       	std	Y+10, r24	; 0x0a
+		if (level <= 0){
+ 190:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 192:	88 23       	and	r24, r24
+ 194:	11 f4       	brne	.+4      	; 0x19a <main+0xa0>
+			output = 0;
+ 196:	19 82       	std	Y+1, r1	; 0x01
+ 198:	6d c0       	rjmp	.+218    	; 0x274 <main+0x17a>
+		}
+		else if ((level == 1) || (level == 2)){
+ 19a:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 19c:	81 30       	cpi	r24, 0x01	; 1
+ 19e:	19 f0       	breq	.+6      	; 0x1a6 <main+0xac>
+ 1a0:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1a2:	82 30       	cpi	r24, 0x02	; 2
+ 1a4:	31 f4       	brne	.+12     	; 0x1b2 <main+0xb8>
+			output = SetBit(output, 5, 1);
+ 1a6:	41 e0       	ldi	r20, 0x01	; 1
+ 1a8:	65 e0       	ldi	r22, 0x05	; 5
+ 1aa:	89 81       	ldd	r24, Y+1	; 0x01
+ 1ac:	78 df       	rcall	.-272    	; 0x9e <SetBit>
+ 1ae:	89 83       	std	Y+1, r24	; 0x01
+ 1b0:	61 c0       	rjmp	.+194    	; 0x274 <main+0x17a>
+		}
+		else if ((level == 3) || (level == 4)){
+ 1b2:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1b4:	83 30       	cpi	r24, 0x03	; 3
+ 1b6:	19 f0       	breq	.+6      	; 0x1be <main+0xc4>
+ 1b8:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1ba:	84 30       	cpi	r24, 0x04	; 4
+ 1bc:	59 f4       	brne	.+22     	; 0x1d4 <main+0xda>
+			output = SetBit(output, 5, 1);
+ 1be:	41 e0       	ldi	r20, 0x01	; 1
+ 1c0:	65 e0       	ldi	r22, 0x05	; 5
+ 1c2:	89 81       	ldd	r24, Y+1	; 0x01
+ 1c4:	6c df       	rcall	.-296    	; 0x9e <SetBit>
+ 1c6:	89 83       	std	Y+1, r24	; 0x01
+			output = SetBit(output, 4, 1);
+ 1c8:	41 e0       	ldi	r20, 0x01	; 1
+ 1ca:	64 e0       	ldi	r22, 0x04	; 4
+ 1cc:	89 81       	ldd	r24, Y+1	; 0x01
+ 1ce:	67 df       	rcall	.-306    	; 0x9e <SetBit>
+ 1d0:	89 83       	std	Y+1, r24	; 0x01
+ 1d2:	50 c0       	rjmp	.+160    	; 0x274 <main+0x17a>
+		}
+		else if ((level == 5) || (level == 6)){
+ 1d4:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1d6:	85 30       	cpi	r24, 0x05	; 5
+ 1d8:	19 f0       	breq	.+6      	; 0x1e0 <main+0xe6>
+ 1da:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1dc:	86 30       	cpi	r24, 0x06	; 6
+ 1de:	79 f4       	brne	.+30     	; 0x1fe <main+0x104>
+			for (unsigned char i = 5; i >= 3; i = i - 1){
+ 1e0:	85 e0       	ldi	r24, 0x05	; 5
+ 1e2:	8a 83       	std	Y+2, r24	; 0x02
+ 1e4:	08 c0       	rjmp	.+16     	; 0x1f6 <main+0xfc>
+				output = SetBit(output, i, 1);
+ 1e6:	41 e0       	ldi	r20, 0x01	; 1
+ 1e8:	6a 81       	ldd	r22, Y+2	; 0x02
+ 1ea:	89 81       	ldd	r24, Y+1	; 0x01
+ 1ec:	58 df       	rcall	.-336    	; 0x9e <SetBit>
+ 1ee:	89 83       	std	Y+1, r24	; 0x01
+		else if ((level == 3) || (level == 4)){
+			output = SetBit(output, 5, 1);
+			output = SetBit(output, 4, 1);
+		}
+		else if ((level == 5) || (level == 6)){
+			for (unsigned char i = 5; i >= 3; i = i - 1){
+ 1f0:	8a 81       	ldd	r24, Y+2	; 0x02
+ 1f2:	81 50       	subi	r24, 0x01	; 1
+ 1f4:	8a 83       	std	Y+2, r24	; 0x02
+ 1f6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 1f8:	83 30       	cpi	r24, 0x03	; 3
+ 1fa:	a8 f7       	brcc	.-22     	; 0x1e6 <main+0xec>
+ 1fc:	3b c0       	rjmp	.+118    	; 0x274 <main+0x17a>
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 7) && (level <= 9)){
+ 1fe:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 200:	87 30       	cpi	r24, 0x07	; 7
+ 202:	90 f0       	brcs	.+36     	; 0x228 <main+0x12e>
+ 204:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 206:	8a 30       	cpi	r24, 0x0A	; 10
+ 208:	78 f4       	brcc	.+30     	; 0x228 <main+0x12e>
+			for (unsigned char i = 5; i >= 2; i = i - 1){
+ 20a:	85 e0       	ldi	r24, 0x05	; 5
+ 20c:	8b 83       	std	Y+3, r24	; 0x03
+				output = SetBit(output, i, 1);
+ 20e:	08 c0       	rjmp	.+16     	; 0x220 <main+0x126>
+ 210:	41 e0       	ldi	r20, 0x01	; 1
+ 212:	6b 81       	ldd	r22, Y+3	; 0x03
+ 214:	89 81       	ldd	r24, Y+1	; 0x01
+ 216:	43 df       	rcall	.-378    	; 0x9e <SetBit>
+ 218:	89 83       	std	Y+1, r24	; 0x01
+			for (unsigned char i = 5; i >= 3; i = i - 1){
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 7) && (level <= 9)){
+			for (unsigned char i = 5; i >= 2; i = i - 1){
+ 21a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 21c:	81 50       	subi	r24, 0x01	; 1
+ 21e:	8b 83       	std	Y+3, r24	; 0x03
+ 220:	8b 81       	ldd	r24, Y+3	; 0x03
+ 222:	82 30       	cpi	r24, 0x02	; 2
+ 224:	a8 f7       	brcc	.-22     	; 0x210 <main+0x116>
+ 226:	26 c0       	rjmp	.+76     	; 0x274 <main+0x17a>
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 10) && (level <= 12)){
+ 228:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 22a:	8a 30       	cpi	r24, 0x0A	; 10
+ 22c:	90 f0       	brcs	.+36     	; 0x252 <main+0x158>
+ 22e:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 230:	8d 30       	cpi	r24, 0x0D	; 13
+ 232:	78 f4       	brcc	.+30     	; 0x252 <main+0x158>
+			for (unsigned char i = 5; i >= 1; i = i - 1){
+ 234:	85 e0       	ldi	r24, 0x05	; 5
+ 236:	8c 83       	std	Y+4, r24	; 0x04
+				output = SetBit(output, i, 1);
+ 238:	08 c0       	rjmp	.+16     	; 0x24a <main+0x150>
+ 23a:	41 e0       	ldi	r20, 0x01	; 1
+ 23c:	6c 81       	ldd	r22, Y+4	; 0x04
+ 23e:	89 81       	ldd	r24, Y+1	; 0x01
+ 240:	2e df       	rcall	.-420    	; 0x9e <SetBit>
+ 242:	89 83       	std	Y+1, r24	; 0x01
+			for (unsigned char i = 5; i >= 2; i = i - 1){
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 10) && (level <= 12)){
+			for (unsigned char i = 5; i >= 1; i = i - 1){
+ 244:	8c 81       	ldd	r24, Y+4	; 0x04
+ 246:	81 50       	subi	r24, 0x01	; 1
+ 248:	8c 83       	std	Y+4, r24	; 0x04
+ 24a:	8c 81       	ldd	r24, Y+4	; 0x04
+ 24c:	88 23       	and	r24, r24
+ 24e:	a9 f7       	brne	.-22     	; 0x23a <main+0x140>
+ 250:	11 c0       	rjmp	.+34     	; 0x274 <main+0x17a>
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 13) && (level <=15)){
+ 252:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 254:	8d 30       	cpi	r24, 0x0D	; 13
+ 256:	70 f0       	brcs	.+28     	; 0x274 <main+0x17a>
+ 258:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 25a:	80 31       	cpi	r24, 0x10	; 16
+			for (unsigned char i = 5; i >= 0; i = i - 1){
+ 25c:	58 f4       	brcc	.+22     	; 0x274 <main+0x17a>
+ 25e:	85 e0       	ldi	r24, 0x05	; 5
+				output = SetBit(output, i, 1);
+ 260:	8d 83       	std	Y+5, r24	; 0x05
+ 262:	41 e0       	ldi	r20, 0x01	; 1
+ 264:	6d 81       	ldd	r22, Y+5	; 0x05
+ 266:	89 81       	ldd	r24, Y+1	; 0x01
+ 268:	1a df       	rcall	.-460    	; 0x9e <SetBit>
+ 26a:	89 83       	std	Y+1, r24	; 0x01
+			for (unsigned char i = 5; i >= 1; i = i - 1){
+				output = SetBit(output, i, 1);
+			}
+		}
+		else if ((level >= 13) && (level <=15)){
+			for (unsigned char i = 5; i >= 0; i = i - 1){
+ 26c:	8d 81       	ldd	r24, Y+5	; 0x05
+ 26e:	81 50       	subi	r24, 0x01	; 1
+ 270:	8d 83       	std	Y+5, r24	; 0x05
+				output = SetBit(output, i, 1);
+			}
+		}
+		if (level <= 4){
+ 272:	f7 cf       	rjmp	.-18     	; 0x262 <main+0x168>
+ 274:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 276:	85 30       	cpi	r24, 0x05	; 5
+			output = SetBit(output, 6, 1);
+ 278:	28 f4       	brcc	.+10     	; 0x284 <main+0x18a>
+ 27a:	41 e0       	ldi	r20, 0x01	; 1
+ 27c:	66 e0       	ldi	r22, 0x06	; 6
+ 27e:	89 81       	ldd	r24, Y+1	; 0x01
+ 280:	0e df       	rcall	.-484    	; 0x9e <SetBit>
+ 282:	89 83       	std	Y+1, r24	; 0x01
+		}
+		PORTC = output;
+ 284:	88 e2       	ldi	r24, 0x28	; 40
+ 286:	90 e0       	ldi	r25, 0x00	; 0
+ 288:	29 81       	ldd	r18, Y+1	; 0x01
+ 28a:	fc 01       	movw	r30, r24
+ 28c:	20 83       	st	Z, r18
+    }
+ 28e:	60 cf       	rjmp	.-320    	; 0x150 <main+0x56>
+
+00000290 <_exit>:
+ 290:	f8 94       	cli
+
+00000292 <__stop_program>:
+ 292:	ff cf       	rjmp	.-2      	; 0x292 <__stop_program>
