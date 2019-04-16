@@ -3,29 +3,29 @@ rquac004_lab4_part2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001e0  2**0
+  0 .data         00000000  00800100  00800100  00000206  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000016c  00000000  00000000  00000074  2**1
+  1 .text         00000192  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  00800100  00800100  000001e0  2**0
+  2 .bss          00000004  00800100  00800100  00000206  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000001e0  2**0
+  3 .comment      00000030  00000000  00000000  00000206  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000210  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000238  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000028  00000000  00000000  00000250  2**0
+  5 .debug_aranges 00000028  00000000  00000000  00000278  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000008b4  00000000  00000000  00000278  2**0
+  6 .debug_info   000008b4  00000000  00000000  000002a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007cd  00000000  00000000  00000b2c  2**0
+  7 .debug_abbrev 000007cd  00000000  00000000  00000b54  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000307  00000000  00000000  000012f9  2**0
+  8 .debug_line   00000323  00000000  00000000  00001321  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000034  00000000  00000000  00001600  2**2
+  9 .debug_frame  00000034  00000000  00000000  00001644  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000441  00000000  00000000  00001634  2**0
+ 10 .debug_str    00000441  00000000  00000000  00001678  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000018  00000000  00000000  00001a75  2**0
+ 11 .debug_ranges 00000018  00000000  00000000  00001ab9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -123,8 +123,8 @@ Disassembly of section .text:
   a2:	a4 30       	cpi	r26, 0x04	; 4
   a4:	b2 07       	cpc	r27, r18
   a6:	e1 f7       	brne	.-8      	; 0xa0 <.do_clear_bss_loop>
-  a8:	4a d0       	rcall	.+148    	; 0x13e <main>
-  aa:	5e c0       	rjmp	.+188    	; 0x168 <_exit>
+  a8:	5d d0       	rcall	.+186    	; 0x164 <main>
+  aa:	71 c0       	rjmp	.+226    	; 0x18e <_exit>
 
 000000ac <__bad_interrupt>:
   ac:	a9 cf       	rjmp	.-174    	; 0x0 <__vectors>
@@ -137,193 +137,187 @@ unsigned char count = 0x00;
 void toggle() {
 	switch (state){//transition
   ae:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <state>
-  b2:	81 30       	cpi	r24, 0x01	; 1
-  b4:	e9 f5       	brne	.+122    	; 0x130 <toggle+0x82>
+  b2:	82 30       	cpi	r24, 0x02	; 2
+  b4:	b1 f1       	breq	.+108    	; 0x122 <toggle+0x74>
+  b6:	28 f4       	brcc	.+10     	; 0xc2 <toggle+0x14>
+  b8:	88 23       	and	r24, r24
+  ba:	49 f0       	breq	.+18     	; 0xce <toggle+0x20>
+  bc:	81 30       	cpi	r24, 0x01	; 1
+  be:	59 f0       	breq	.+22     	; 0xd6 <toggle+0x28>
+  c0:	4d c0       	rjmp	.+154    	; 0x15c <toggle+0xae>
+  c2:	83 30       	cpi	r24, 0x03	; 3
+  c4:	d1 f1       	breq	.+116    	; 0x13a <toggle+0x8c>
+  c6:	84 30       	cpi	r24, 0x04	; 4
+  c8:	09 f4       	brne	.+2      	; 0xcc <toggle+0x1e>
+  ca:	41 c0       	rjmp	.+130    	; 0x14e <toggle+0xa0>
+  cc:	47 c0       	rjmp	.+142    	; 0x15c <toggle+0xae>
 		case Start:
 			state = WaitPress;
+  ce:	81 e0       	ldi	r24, 0x01	; 1
+  d0:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
+			break;
+  d4:	08 95       	ret
+		case WaitPress:
+			if ((hold == 0x00) && (hold1 == 0x00)){
+  d6:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <hold>
+  da:	91 11       	cpse	r25, r1
+  dc:	06 c0       	rjmp	.+12     	; 0xea <toggle+0x3c>
+  de:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <hold1>
+  e2:	81 11       	cpse	r24, r1
+  e4:	02 c0       	rjmp	.+4      	; 0xea <toggle+0x3c>
+				state = Start;
+  e6:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <state>
+			}
+			while ((hold == (PINA & 0x01)) && (hold1 == (PINA & 0x02))){
+  ea:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <hold1>
+				}
+				else if (hold != 0x00){
+					state = PressOne;
+				}
+				else if (hold1 != 0x00) {
+					state = PressTwo;
+  ee:	53 e0       	ldi	r21, 0x03	; 3
+			while ((hold == (PINA & 0x01)) && (hold1 == (PINA & 0x02))){
+				if ((hold != 0x00) && (hold1 != 0x00)){
+					state = PressBoth;
+				}
+				else if (hold != 0x00){
+					state = PressOne;
+  f0:	32 e0       	ldi	r19, 0x02	; 2
+			if ((hold == 0x00) && (hold1 == 0x00)){
+				state = Start;
+			}
+			while ((hold == (PINA & 0x01)) && (hold1 == (PINA & 0x02))){
+				if ((hold != 0x00) && (hold1 != 0x00)){
+					state = PressBoth;
+  f2:	44 e0       	ldi	r20, 0x04	; 4
+  f4:	0d c0       	rjmp	.+26     	; 0x110 <toggle+0x62>
+		case WaitPress:
+			if ((hold == 0x00) && (hold1 == 0x00)){
+				state = Start;
+			}
+			while ((hold == (PINA & 0x01)) && (hold1 == (PINA & 0x02))){
+				if ((hold != 0x00) && (hold1 != 0x00)){
+  f6:	99 23       	and	r25, r25
+  f8:	41 f0       	breq	.+16     	; 0x10a <toggle+0x5c>
+  fa:	22 23       	and	r18, r18
+  fc:	19 f0       	breq	.+6      	; 0x104 <toggle+0x56>
+					state = PressBoth;
+  fe:	40 93 03 01 	sts	0x0103, r20	; 0x800103 <state>
+ 102:	06 c0       	rjmp	.+12     	; 0x110 <toggle+0x62>
+				}
+				else if (hold != 0x00){
+					state = PressOne;
+ 104:	30 93 03 01 	sts	0x0103, r19	; 0x800103 <state>
+ 108:	03 c0       	rjmp	.+6      	; 0x110 <toggle+0x62>
+				}
+				else if (hold1 != 0x00) {
+ 10a:	21 11       	cpse	r18, r1
+					state = PressTwo;
+ 10c:	50 93 03 01 	sts	0x0103, r21	; 0x800103 <state>
 			break;
 		case WaitPress:
-			while (hold == (PINA & 0x01)){
-  b6:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <hold>
-			if (hold != 0x00){
-				state = PressOne;
-			} else if (hold1 != 0x00) {
-				state = PressTwo;
+			if ((hold == 0x00) && (hold1 == 0x00)){
+				state = Start;
 			}
-			if ((hold != 0x00) && (hold1 != 0x00)){
-  ba:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <hold1>
-				state = PressBoth;
+			while ((hold == (PINA & 0x01)) && (hold1 == (PINA & 0x02))){
+ 110:	80 b1       	in	r24, 0x00	; 0
+ 112:	81 70       	andi	r24, 0x01	; 1
+ 114:	98 13       	cpse	r25, r24
+ 116:	25 c0       	rjmp	.+74     	; 0x162 <toggle+0xb4>
+ 118:	80 b1       	in	r24, 0x00	; 0
+ 11a:	82 70       	andi	r24, 0x02	; 2
+ 11c:	82 17       	cp	r24, r18
+ 11e:	59 f3       	breq	.-42     	; 0xf6 <toggle+0x48>
+ 120:	08 95       	ret
+					state = PressBoth;
+				}
 			}
-			if (hold != 0x00){
-				state = PressOne;
-			} else if (hold1 != 0x00) {
-				state = PressTwo;
-  be:	53 e0       	ldi	r21, 0x03	; 3
-			while (hold == (PINA & 0x01)){
-			if ((hold != 0x00) && (hold1 != 0x00)){
-				state = PressBoth;
-			}
-			if (hold != 0x00){
-				state = PressOne;
-  c0:	32 e0       	ldi	r19, 0x02	; 2
-			} else if (hold1 != 0x00) {
-				state = PressTwo;
-			}
-			if ((hold != 0x00) && (hold1 != 0x00)){
-				state = PressBoth;
-  c2:	44 e0       	ldi	r20, 0x04	; 4
-  c4:	0c c0       	rjmp	.+24     	; 0xde <toggle+0x30>
-		case Start:
-			state = WaitPress;
 			break;
-		case WaitPress:
-			while (hold == (PINA & 0x01)){
-			if ((hold != 0x00) && (hold1 != 0x00)){
-  c6:	99 23       	and	r25, r25
-  c8:	b9 f1       	breq	.+110    	; 0x138 <toggle+0x8a>
-				state = PressBoth;
-			}
-			if (hold != 0x00){
-				state = PressOne;
-  ca:	30 93 03 01 	sts	0x0103, r19	; 0x800103 <state>
-			} else if (hold1 != 0x00) {
-				state = PressTwo;
-			}
-			if ((hold != 0x00) && (hold1 != 0x00)){
-  ce:	21 11       	cpse	r18, r1
-  d0:	04 c0       	rjmp	.+8      	; 0xda <toggle+0x2c>
-  d2:	05 c0       	rjmp	.+10     	; 0xde <toggle+0x30>
-				state = PressBoth;
-			}
-			if (hold != 0x00){
-				state = PressOne;
-			} else if (hold1 != 0x00) {
-				state = PressTwo;
-  d4:	50 93 03 01 	sts	0x0103, r21	; 0x800103 <state>
-  d8:	02 c0       	rjmp	.+4      	; 0xde <toggle+0x30>
-			}
-			if ((hold != 0x00) && (hold1 != 0x00)){
-				state = PressBoth;
-  da:	40 93 03 01 	sts	0x0103, r20	; 0x800103 <state>
-	switch (state){//transition
-		case Start:
-			state = WaitPress;
-			break;
-		case WaitPress:
-			while (hold == (PINA & 0x01)){
-  de:	80 b1       	in	r24, 0x00	; 0
-  e0:	81 70       	andi	r24, 0x01	; 1
-  e2:	98 17       	cp	r25, r24
-  e4:	81 f3       	breq	.-32     	; 0xc6 <toggle+0x18>
-		default:
-			state = WaitPress;
-			break;
-	}
-	
-	switch (state){//actions
-  e6:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <state>
-  ea:	83 30       	cpi	r24, 0x03	; 3
-  ec:	81 f0       	breq	.+32     	; 0x10e <toggle+0x60>
-  ee:	84 30       	cpi	r24, 0x04	; 4
-  f0:	c1 f0       	breq	.+48     	; 0x122 <toggle+0x74>
-  f2:	82 30       	cpi	r24, 0x02	; 2
-  f4:	e9 f4       	brne	.+58     	; 0x130 <toggle+0x82>
 		case PressOne:
-			if (count <= 9){
-  f6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
-  fa:	8a 30       	cpi	r24, 0x0A	; 10
-  fc:	20 f4       	brcc	.+8      	; 0x106 <toggle+0x58>
+			if (count < 9){
+ 122:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 126:	89 30       	cpi	r24, 0x09	; 9
+ 128:	20 f4       	brcc	.+8      	; 0x132 <toggle+0x84>
 				count = count + 1;
-  fe:	8f 5f       	subi	r24, 0xFF	; 255
- 100:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 12a:	8f 5f       	subi	r24, 0xFF	; 255
+ 12c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
 				PORTC = count;
- 104:	88 b9       	out	0x08, r24	; 8
+ 130:	88 b9       	out	0x08, r24	; 8
 			}
 			state = WaitPress;	
- 106:	81 e0       	ldi	r24, 0x01	; 1
- 108:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
+ 132:	81 e0       	ldi	r24, 0x01	; 1
+ 134:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
 			break;
- 10c:	08 95       	ret
+ 138:	08 95       	ret
 		case PressTwo:
 			if (count >= 0){
 				count = count - 1;
- 10e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 112:	81 50       	subi	r24, 0x01	; 1
- 114:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 13a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 13e:	81 50       	subi	r24, 0x01	; 1
+ 140:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
 				PORTC = count;
- 118:	88 b9       	out	0x08, r24	; 8
+ 144:	88 b9       	out	0x08, r24	; 8
 			}
 			state = WaitPress;
- 11a:	81 e0       	ldi	r24, 0x01	; 1
- 11c:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
 			break;
- 120:	08 95       	ret
+ 14c:	08 95       	ret
 		case PressBoth:
 			count = 0;
- 122:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+ 14e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
 			PORTC = count;
- 126:	18 b8       	out	0x08, r1	; 8
+ 152:	18 b8       	out	0x08, r1	; 8
 			state = WaitPress;
- 128:	81 e0       	ldi	r24, 0x01	; 1
- 12a:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
+ 154:	81 e0       	ldi	r24, 0x01	; 1
+ 156:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
 			break;
- 12e:	08 95       	ret
+ 15a:	08 95       	ret
 		default:
 			state = WaitPress;
- 130:	81 e0       	ldi	r24, 0x01	; 1
- 132:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
-			break;
-	}
-}
- 136:	08 95       	ret
-			if ((hold != 0x00) && (hold1 != 0x00)){
-				state = PressBoth;
-			}
-			if (hold != 0x00){
-				state = PressOne;
-			} else if (hold1 != 0x00) {
- 138:	21 11       	cpse	r18, r1
- 13a:	cc cf       	rjmp	.-104    	; 0xd4 <toggle+0x26>
- 13c:	d0 cf       	rjmp	.-96     	; 0xde <toggle+0x30>
+ 15c:	81 e0       	ldi	r24, 0x01	; 1
+ 15e:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <state>
+ 162:	08 95       	ret
 
-0000013e <main>:
+00000164 <main>:
 	}
 }
 
 int main(void)
 {
 	DDRA = 0x00; PORTA = 0xFF; // config
- 13e:	11 b8       	out	0x01, r1	; 1
- 140:	8f ef       	ldi	r24, 0xFF	; 255
- 142:	82 b9       	out	0x02, r24	; 2
+ 164:	11 b8       	out	0x01, r1	; 1
+ 166:	8f ef       	ldi	r24, 0xFF	; 255
+ 168:	82 b9       	out	0x02, r24	; 2
 	DDRB = 0xFF; PORTB = 0x00; // config
- 144:	84 b9       	out	0x04, r24	; 4
- 146:	15 b8       	out	0x05, r1	; 5
+ 16a:	84 b9       	out	0x04, r24	; 4
+ 16c:	15 b8       	out	0x05, r1	; 5
 	DDRC = 0xFF; PORTC = 0x00; // config
- 148:	87 b9       	out	0x07, r24	; 7
- 14a:	18 b8       	out	0x08, r1	; 8
+ 16e:	87 b9       	out	0x07, r24	; 7
+ 170:	18 b8       	out	0x08, r1	; 8
 		count = 7;
- 14c:	87 e0       	ldi	r24, 0x07	; 7
- 14e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 172:	87 e0       	ldi	r24, 0x07	; 7
+ 174:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
 		PORTC = 7;
- 152:	88 b9       	out	0x08, r24	; 8
-    while (1) 
+ 178:	88 b9       	out	0x08, r24	; 8
+
+	while (1) 
     {
-		hold = PINA & 0x01;
- 154:	80 b1       	in	r24, 0x00	; 0
- 156:	81 70       	andi	r24, 0x01	; 1
- 158:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <hold>
+		    	hold = PINA & 0x01;
+ 17a:	80 b1       	in	r24, 0x00	; 0
+ 17c:	81 70       	andi	r24, 0x01	; 1
+ 17e:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <hold>
 		hold1 = PINA & 0x02;
- 15c:	80 b1       	in	r24, 0x00	; 0
- 15e:	82 70       	andi	r24, 0x02	; 2
- 160:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <hold1>
-
+ 182:	80 b1       	in	r24, 0x00	; 0
+ 184:	82 70       	andi	r24, 0x02	; 2
+ 186:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <hold1>
 		toggle();
- 164:	a4 df       	rcall	.-184    	; 0xae <toggle>
- 166:	f6 cf       	rjmp	.-20     	; 0x154 <main+0x16>
+ 18a:	91 df       	rcall	.-222    	; 0xae <toggle>
+ 18c:	f6 cf       	rjmp	.-20     	; 0x17a <main+0x16>
 
-00000168 <_exit>:
- 168:	f8 94       	cli
+0000018e <_exit>:
+ 18e:	f8 94       	cli
 
-0000016a <__stop_program>:
- 16a:	ff cf       	rjmp	.-2      	; 0x16a <__stop_program>
+00000190 <__stop_program>:
+ 190:	ff cf       	rjmp	.-2      	; 0x190 <__stop_program>

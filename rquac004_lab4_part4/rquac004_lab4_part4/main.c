@@ -11,6 +11,7 @@
  * Author : mrvec
  */ 
 
+
 #include <avr/io.h>
 
 /*
@@ -55,8 +56,7 @@ void toggle() {
 			}
 			break;
 		case PressX:
-		count = 0;
-		PORTC = count;
+		PORTC = 0;
 			while (hold == (PINA & 0x01)){
 				if (hold != 0x00){
 					count = 1;
@@ -71,12 +71,12 @@ void toggle() {
 		case PressY:
 			count = 0;
 			PORTC = count;
-			if (hold2 != 0x00){
-				count = 4;
-				PORTC = count;
-				state = WaitPress;
-				break;
-			}
+				if (hold2 != 0x00){
+					count = 4;
+					PORTC = count;
+					state = WaitPress;
+					break;
+				}
 			while (hold1 == (PINA & 0x02)){
 				if (hold1 != 0x00){
 					count = 2;
@@ -91,13 +91,19 @@ void toggle() {
 		case PressHash:
 			count = 0;
 			PORTC = count;
-			if (hold1 != 0x00){
-				count = 2;
-				PORTC = count;
-				state = WaitPress;
-				break;
-			}
+				if (hold1 != 0x00){
+					count = 2;
+					PORTC = count;
+					state = WaitPress;
+					break;
+				}
 			while (hold2 == (PINA & 0x04)){
+				if (hold1 != 0x00){
+					count = 2;
+					PORTC = count;
+					state = WaitPress;
+					break;
+				}
 				if (hold2 != 0x00){
 					count = 4;
 					PORTC = count;
@@ -113,10 +119,15 @@ void toggle() {
 			break;
 	}
 	
-	switch (state){//actions
+	switch (state){ //actions
 		case Unlock:
-			PORTB = 1;
-			PORTC = 0;
+			if ((PINB & 0x01) != 0x00){
+				PORTB = 0;
+				PORTC = 0;
+				} else {
+				PORTB = 1;
+				PORTC = 0;
+				}
 			state = WaitPress;
 			break;
 		case Lock:

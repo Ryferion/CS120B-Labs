@@ -55,8 +55,7 @@ void toggle() {
 			}
 			break;
 		case PressX:
-		count = 0;
-		PORTC = count;
+		PORTC = 0;
 			while (hold == (PINA & 0x01)){
 				if (hold != 0x00){
 					count = 1;
@@ -69,14 +68,7 @@ void toggle() {
 			}
 			break;
 		case PressY:
-			count = 0;
-			PORTC = count;
-			if (hold2 != 0x00){
-				count = 4;
-				PORTC = count;
-				state = WaitPress;
-				break;
-			}
+		PORTC = 0;
 			while (hold1 == (PINA & 0x02)){
 				if (hold1 != 0x00){
 					count = 2;
@@ -89,14 +81,7 @@ void toggle() {
 			}
 		break;
 		case PressHash:
-			count = 0;
-			PORTC = count;
-			if (hold1 != 0x00){
-				count = 2;
-				PORTC = count;
-				state = WaitPress;
-				break;
-			}
+		PORTC = 0;
 			while (hold2 == (PINA & 0x04)){
 				if (hold2 != 0x00){
 					count = 4;
